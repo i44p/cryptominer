@@ -1,10 +1,15 @@
 import inspect
 
 
-def get_methods(cls) -> list:
+def get_methods(cls) -> list[str]:
+    """Возвращает все user-defined методы класса.
+
+    Returns:
+        list[str]: Список строк с названиями методов
+    """
     return [
         method for method, _ in inspect.getmembers(cls, predicate=inspect.ismethod)
-        if not method.startswith('__') and not method.endswith('__')
+        if not (method.startswith('__') or method.endswith('__'))
     ]
 
 
