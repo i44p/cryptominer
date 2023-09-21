@@ -21,3 +21,13 @@ def AssertFor(cls, target_output):
     """
     for method_name in get_methods(cls):
         assert getattr(cls, method_name)() == target_output
+
+
+def AssertForFunc(cls, comparison_func):
+    """Проверяет истинность функцииб в которую были переданы результаты работы всех методов класса.
+
+    Args:
+        target_output (any type): Значение, с которым сравнивать
+    """
+    for method_name in get_methods(cls):
+        assert comparison_func(*getattr(cls, method_name)())

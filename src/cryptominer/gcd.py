@@ -16,6 +16,9 @@ class GreatestCommonDivisor:
         self.b = b
     
     def Euclidean(self) -> int:
-        return 5
+        remainder, mod = divmod(self.a, self.b)
+        if remainder == 0:
+            return self.a
+        return GreatestCommonDivisor(self.b, remainder).Euclidean()
 
 
