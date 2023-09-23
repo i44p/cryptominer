@@ -15,10 +15,10 @@ class GreatestCommonDivisor:
         self.a = a
         self.b = b
     
-    def Euclidean(self) -> int:
-        remainder, mod = divmod(self.a, self.b)
+    def Euclidean_recursive(self) -> int:
+        mod, remainder = divmod(self.a, self.b)
         if remainder == 0:
             return self.a
-        return GreatestCommonDivisor(self.b, remainder).Euclidean()
+        return GreatestCommonDivisor(self.b, mod).Euclidean_recursive()
 
 
