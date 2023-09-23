@@ -31,4 +31,5 @@ def AssertForFunc(cls, comparison_func):
         target_output (any type): Значение, с которым сравнивать
     """
     for method_name in get_methods(cls):
-        assert comparison_func(*getattr(cls, method_name)())
+        result = getattr(cls, method_name)()
+        assert comparison_func(*result), f"method {method_name} failed (got {result})"
