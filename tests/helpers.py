@@ -20,7 +20,8 @@ def AssertFor(cls, target_output):
         target_output (any type): Значение, с которым сравнивать
     """
     for method_name in get_methods(cls):
-        assert getattr(cls, method_name)() == target_output
+        result = getattr(cls, method_name)()
+        assert result == target_output, f"method {method_name} failed (got {result} instead of {target_output})"
 
 
 def AssertForFunc(cls, comparison_func):
