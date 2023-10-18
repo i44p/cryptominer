@@ -4,7 +4,7 @@ import pytest
 from helpers import *
 
 
-@pytest.mark.parametrize("test_input,expected",[
+@pytest.mark.parametrize("test_input,expected", [
     (2, True),
     (3, True),
     (4, False),
@@ -18,6 +18,7 @@ from helpers import *
 ])
 def test_is_prime(test_input, expected):
     assert cryptominer.is_prime(test_input) == expected
+
 
 @pytest.mark.parametrize("test_input,expected", [
     (cryptominer.GreatestCommonDivisor(1234, 54), 2),
