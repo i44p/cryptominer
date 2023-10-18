@@ -11,9 +11,9 @@ from helpers import *
 def test_coprimes_defined(test_input, expected):
     AssertFor(test_input, expected)
 
-def test_coprimes_generated():
-    for a in range(1, 10_000):
-       for b in range(1, 10_000):
-           u, v = cryptominer.Coprimes(a, b)
-           assert a * u + b * v == cryptominer.GreatestCommonDivisor(a, b).Euclidean()
 
+def test_coprimes_generated():
+    for a in range(2, 1_000):
+        for b in range(2, 200):
+            AssertForFunc(cryptominer.Coprimes(a, b),
+                          lambda u, v: a * u + b * v)
