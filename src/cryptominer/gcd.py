@@ -17,16 +17,15 @@ class GreatestCommonDivisor:
         self.b = b
 
     def Euclidean_recursive(self) -> int:
-        mod, remainder = divmod(self.a, self.b)
-        if mod == 0:
-            return self.a
-        return GreatestCommonDivisor(self.b, mod).Euclidean_recursive()
+        remainder = self.a % self.b
+        if remainder == 0:
+            return self.b
+        return GreatestCommonDivisor(self.b, remainder).Euclidean_recursive()
 
     def Euclidean(self) -> int:
-        mod, remainder = divmod(self.a, self.b)
+        remainder = self.a % self.b
         remainder_last = self.b
         while remainder != 0:
-            remainder_last = remainder
-            mod, remainder = divmod(remainder_last, mod)
+            remainder_last, remainder = remainder, remainder_last % remainder
 
         return remainder_last

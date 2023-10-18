@@ -20,7 +20,7 @@ def test_is_prime(test_input, expected):
     assert cryptominer.is_prime(test_input) == expected
 
 @pytest.mark.parametrize("test_input,expected", [
-    (cryptominer.GreatestCommonDivisor(1234, 54), 2)
+    (cryptominer.GreatestCommonDivisor(1234, 54), 2),
     (cryptominer.GreatestCommonDivisor(2548, 22), 2)
 ])
 def test_gcd(test_input, expected):
