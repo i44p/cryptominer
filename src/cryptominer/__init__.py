@@ -1,2 +1,2 @@
 from .gcd import *
-from .coprime import *
+from .coprimes import *
