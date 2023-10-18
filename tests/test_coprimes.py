@@ -15,5 +15,5 @@ def test_coprimes_generated():
     for a in range(1, 10_000):
        for b in range(1, 10_000):
            u, v = cryptominer.Coprimes(a, b)
-           assert a * u + b * v == cryptominer.GreatestCommonDivisor(a, b).Euclidean_recursive()
+           assert a * u + b * v == cryptominer.GreatestCommonDivisor(a, b).Euclidean()
 
