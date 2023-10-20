@@ -22,7 +22,7 @@ def test_is_prime(test_input, expected):
 
 
 @pytest.mark.parametrize("test_input,expected", [
-    # (cryptominer.Coprimes(1234, 54), 2)
+    (cryptominer.Factorization(20), (2,) * 2 + (5,)),
     (cryptominer.Factorization(82_798_848), (2,) * 8 + (3,) * 5 + (11,) * 3),
     (cryptominer.Factorization(81_057_226_635), (3,) * 3 + (5,) + (7,) * 3 + (11,) * 2 + (17,) + (23,) + (37,))
 ])
