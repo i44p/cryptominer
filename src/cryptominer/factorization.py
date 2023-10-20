@@ -7,7 +7,10 @@ def is_prime(num: int) -> bool:
             return True
         return False
     
-    for i in range(3, max(5+1, int(_sqrt(num) + 1)), 2):
+    if num in (3, 5):
+        return True
+
+    for i in range(3, int(_sqrt(num) + 1), 2):
         if num % i == 0:
             return False
     return True
@@ -24,7 +27,7 @@ class Factorization:
         while num % 2 == 0:
             factors += (2,)
             num //= 2
-        
+
         for factor in range(3, max(5+1, int(_sqrt(num) + 1)), 2):
             while num % factor == 0:
                 factors += (factor,)
