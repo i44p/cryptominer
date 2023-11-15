@@ -5,8 +5,8 @@ from helpers import *
 
 
 @pytest.mark.parametrize("test_input,expected", [
-    # (cryptominer.Coprimes(1234, 54), 2)
-    (cryptominer.Coprimes(2548, 22), (5, -579))
+    (cryptominer.Coprimes(2548, 22), (5, -579)),
+    (cryptominer.Coprimes(25_521, 470), (-3, 163))
 ])
 def test_coprimes_defined(test_input, expected):
     AssertFor(test_input, expected)

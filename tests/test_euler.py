@@ -8,7 +8,8 @@ from helpers import *
     (9, 6),
     (20, 8),
     (375, 200),
-    (4364547586879, 4327920227520)
+    (4364547586879, 4327920227520),
+    (400, 160)
 ])
 def test_Euler(test_input, expected):
     assert cryptominer.Euler(test_input).Euler() == expected

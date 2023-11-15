@@ -6,7 +6,9 @@ from helpers import *
 
 @pytest.mark.parametrize("test_input,expected", [
     (cryptominer.GreatestCommonDivisor(1234, 54), 2),
-    (cryptominer.GreatestCommonDivisor(2548, 22), 2)
+    (cryptominer.GreatestCommonDivisor(2548, 22), 2),
+    (cryptominer.GreatestCommonDivisor(25_521, 470), 47)
+    
 ])
 def test_gcd(test_input, expected):
     AssertFor(test_input, expected)
