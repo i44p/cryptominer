@@ -18,7 +18,7 @@ from helpers import *
     (81_057_226_637, False)
 ])
 def test_is_prime(test_input, expected):
-    assert cryptominer.is_prime(test_input) == expected
+    assert (cryptominer.Factorization(test_input).Dumb() == (test_input,)) == expected
 
 
 @pytest.mark.parametrize("test_input,expected", [
