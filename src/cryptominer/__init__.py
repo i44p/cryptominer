@@ -4,4 +4,4 @@ from .factorization import *
 from .euler import *
 from .congruence import *
 from .modmul_inverse import *
-# from .RSA import *
+from .RSA import *
