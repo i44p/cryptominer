@@ -4,6 +4,7 @@ import random
 from .euler import Euler
 from .factorization import Factorization
 from .modmul_inverse import ModularMultiplicativeInverse
+from .gcd import GreatestCommonDivisor
 
 RSA_BLOCK_SIZE = 2
 
@@ -47,8 +48,8 @@ class KeypairRSA:
         phi = Euler(mod).Euler()
 
         # 3
-        exponent = random.randint(2, phi)
-        while len(Factorization(exponent).Dumb()) > 1:
+        exponent = 1 << self.pq_size+1
+        while GreatestCommonDivisor(exponent, phi).Euclidean() != 1:
             exponent = random.randint(2, phi - 1)
 
         # 4
@@ -71,7 +72,9 @@ class EncodeRSA:
         for block in batched(self.message, self.block_size):
             block_encoded = int(''.join(map(get_code_from_letter, block)))
 
-            block_ciphered = str((block_encoded ** self.exponent) % self.mod)
+            assert self.mod > block_encoded
+            
+            block_ciphered = str(pow(block_encoded, self.exponent, self.mod))
 
             ciphered.append(block_ciphered)
         return ciphered
@@ -87,10 +90,16 @@ class DecodeRSA:
         deciphered = ""
         for block in self.message:
             block_num = int(block)
+            
+            assert block_num < self.mod
 
-            block_deciphered = str((block_num ** self.d) % self.mod)
+            block_deciphered = pow(block_num, self.d, self.mod)
 
-            decoded = ''.join([get_letter_from_code(''.join(code))
-                              for code in batched(block_deciphered, 2)])
-            deciphered += decoded
+            decoded = ""
+            while block_deciphered > 0:
+                char = block_deciphered % 100
+                decoded += get_letter_from_code(char)
+                block_deciphered //= 100
+
+            deciphered += decoded[::-1]
         return deciphered
